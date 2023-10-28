@@ -3,6 +3,7 @@ package com.example.usermanagement.controller;
 import com.example.usermanagement.dto.UserDto;
 import com.example.usermanagement.entity.User;
 import com.example.usermanagement.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class UserController {
 
     //create user
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         UserDto savedUser = userService.createUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
@@ -38,7 +39,7 @@ public class UserController {
 
     //update user
     @PutMapping("{id}")
-    public ResponseEntity<UserDto> updateUser(@PathVariable Long id,@RequestBody UserDto user) {
+    public ResponseEntity<UserDto> updateUser(@Valid @PathVariable Long id,@RequestBody UserDto user) {
         user.setId(id);
         UserDto updatedUser = userService.updateUser(user);
         return ResponseEntity.ok(updatedUser);
