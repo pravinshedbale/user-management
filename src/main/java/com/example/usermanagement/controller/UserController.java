@@ -1,7 +1,5 @@
 package com.example.usermanagement.controller;
-
 import com.example.usermanagement.dto.UserDto;
-import com.example.usermanagement.entity.User;
 import com.example.usermanagement.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
